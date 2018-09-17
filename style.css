@@ -1,0 +1,15 @@
+.navbar {
+  background-color: #e9541f;
+}
+
+.form-hidden {
+  display: none;
+}
+
+.form-row {
+  margin: 1em;
+}
+
+.li-hidden {
+  display: none;
+}

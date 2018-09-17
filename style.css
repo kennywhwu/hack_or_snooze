@@ -2,14 +2,22 @@
   background-color: #e9541f;
 }
 
-.form-hidden {
-  display: none;
+#submit-link {
+  background: #e9541f;
+  color: white;
 }
 
 .form-row {
   margin: 1em;
 }
 
-.li-hidden {
+#container-submit,
+.li-hidden-favorites,
+.li-hidden-domain {
   display: none;
+}
+
+small:hover,
+i:hover {
+  cursor: pointer;
 }

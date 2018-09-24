@@ -2,7 +2,8 @@
   background-color: #e9541f;
 }
 
-#submit-link {
+#submit-link,
+#login-link {
   background: #e9541f;
   color: white;
 }
@@ -12,6 +13,9 @@
 }
 
 #container-submit,
+#container-create-user,
+#container-login-user,
+#container-user-profile,
 .li-hidden-favorites,
 .li-hidden-domain {
   display: none;

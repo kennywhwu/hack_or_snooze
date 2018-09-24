@@ -9,7 +9,7 @@ class StoryList {
     $.getJSON(`${BASE_URL}/stories`, function(response) {
       const stories = response.data.map(function(val) {
         const { username, title, author, url, storyId } = val;
-        return new Story(username, title, author, url, storyId);
+        return new Story(author, title, url, username, storyId);
       });
       const storyList = new StoryList(stories);
       return cb(storyList);
@@ -36,7 +36,7 @@ class StoryList {
         const { author, title, url, username, storyId } = response.data;
         const newStory = new Story(author, title, url, username, storyId);
         this.stories.push(newStory);
-        user.retrieveDetails(() => cb(newStory));
+        user.retrieveDetails(() => cb(this));
       }
     });
   }
@@ -60,12 +60,10 @@ class StoryList {
 }
 
 class User {
-  constructor(username, password, name, createdAt, updatedAt) {
+  constructor(username, password, name) {
     this.username = username;
     this.password = password;
     this.name = name;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
     this.loginToken = "";
     this.favorites = [];
     this.ownStories = [];
@@ -99,7 +97,6 @@ class User {
       },
       response => {
         const token = response.data.token;
-        localStorage.HOSJWT = token;
         this.loginToken = token;
         return cb(this);
       }
@@ -116,8 +113,6 @@ class User {
         this.name = response.data.name;
         this.favorites = response.data.favorites;
         this.ownStories = response.data.stories;
-        this.createdAt = response.data.createdAt;
-        this.updatedAt = response.data.updatedAt;
         return cb(this);
       }
     });
